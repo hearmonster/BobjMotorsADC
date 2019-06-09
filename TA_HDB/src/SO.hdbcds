@@ -1,0 +1,44 @@
+namespace TA_Class_Project.TA_HDB;
+
+context SO {
+   type HistT {
+      CREATEDBY : String(10);
+      CREATEDAT : LocalDate;
+      CHANGEDBY : String(10);
+      CHANGEDAT : LocalDate;
+   };
+
+   entity Header {
+      key SALESORDERID    : String(10);
+          HISTORY         : HistT;
+          NOTEID          : String(10) null;
+          PARTNERID       : String(10);
+          CURRENCY        : String(5);
+          GROSSAMOUNT     : Decimal(15, 2);
+          NETAMOUNT       : Decimal(15, 2);
+          TAXAMOUNT       : Decimal(15, 2);
+          LIFECYCLESTATUS : String(1);
+          BILLINGSTATUS   : String(1);
+          DELIVERYSTATUS  : String(1);
+   };
+   entity Item {
+      key SALESORDERID   : String(10);
+      key SALESORDERITEM : String(10);
+          PRODUCTID      : String(10);
+          NOTEID         : String(10);
+          CURRENCY       : String(5);
+          GROSSAMOUNT    : Decimal(15, 2);
+          NETAMOUNT      : Decimal(15, 2);
+          TAXAMOUNT      : Decimal(15, 2);
+          ITEMATPSTATUS  : String(1);
+          OPITEMPOS      : String(10);
+          QUANTITY       : Decimal(13,3);
+          QUANTITYUNIT   : String(3);
+          DELIVERYDATE   : LocalDate;
+   };
+   entity Filter {
+      key MODEL    : String(30);
+      key COLNAME  : String(8);
+          COLVALUE : LocalDate;
+   };
+};

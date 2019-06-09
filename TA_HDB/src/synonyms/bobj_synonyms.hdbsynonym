@@ -1,0 +1,62 @@
+{
+  "TA_Class_Project.TA_HDB.synonyms::BOBJ_CUSTOMER": {
+    "target": {
+      "object": "CUSTOMER",
+      "schema": "BOBJ"
+    }
+  },
+  "TA_Class_Project.TA_HDB.synonyms::BOBJ_COLOR": {
+    "target": {
+      "object": "COLOR",
+      "schema": "BOBJ"
+    }
+  },
+  "TA_Class_Project.TA_HDB.synonyms::BOBJ_COUNTRY": {
+    "target": {
+      "object": "COUNTRY",
+      "schema": "BOBJ"
+    }
+  },
+  "TA_Class_Project.TA_HDB.synonyms::BOBJ_PRDCOLOR": {
+    "target": {
+      "object": "PRDCOLOR",
+      "schema": "BOBJ"
+    }
+  },
+  "TA_Class_Project.TA_HDB.synonyms::BOBJ_PRODUCT": {
+    "target": {
+      "object": "PRODUCT",
+      "schema": "BOBJ"
+    }
+  },
+  "TA_Class_Project.TA_HDB.synonyms::BOBJ_RANGE": {
+    "target": {
+      "object": "REGION",
+      "schema": "BOBJ"
+    }
+  },
+  "TA_Class_Project.TA_HDB.synonyms::BOBJ_REGION": {
+    "target": {
+      "object": "REGION",
+      "schema": "BOBJ"
+    }
+  },
+  "TA_Class_Project.TA_HDB.synonyms::BOBJ_SALE": {
+    "target": {
+      "object": "SALE",
+      "schema": "BOBJ"
+    }
+  },
+  "TA_Class_Project.TA_HDB.synonyms::BOBJ_SALELINE": {
+    "target": {
+      "object": "SALELINE",
+      "schema": "BOBJ"
+    }
+  },
+  "TA_Class_Project.TA_HDB.synonyms::BOBJ_VARIETY": {
+    "target": {
+      "object": "VARIETY",
+      "schema": "BOBJ"
+    }
+  }
+}

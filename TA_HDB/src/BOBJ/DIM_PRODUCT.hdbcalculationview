@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="TA_Class_Project.TA_HDB.BOBJ::DIM_PRODUCT" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="DIM_PRODUCT"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="TA_Class_Project.TA_HDB.synonyms::BOBJ_PRODUCT">
+    <resourceUri>TA_Class_Project.TA_HDB.synonyms::BOBJ_PRODUCT</resourceUri>
+  </DataSource>
+  <DataSource id="TA_Class_Project.TA_HDB.synonyms::BOBJ_VARIETY">
+    <resourceUri>TA_Class_Project.TA_HDB.synonyms::BOBJ_VARIETY</resourceUri>
+  </DataSource>
+  <DataSource id="TA_Class_Project.TA_HDB.synonyms::BOBJ_COUNTRY">
+    <resourceUri>TA_Class_Project.TA_HDB.synonyms::BOBJ_COUNTRY</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="ProdVariety" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="PRODID">
+        <descriptions defaultDescription="This column returns the catalog number of the product"/>
+      </viewAttribute>
+      <viewAttribute id="PRODNAME">
+        <descriptions defaultDescription="This column is the catalog name of the product"/>
+      </viewAttribute>
+      <viewAttribute id="PRODPRCE">
+        <descriptions defaultDescription="The catalog price in US Dollars, may be subject to change"/>
+      </viewAttribute>
+      <viewAttribute id="CNTRYID">
+        <descriptions defaultDescription="This column is the identification of the product country"/>
+      </viewAttribute>
+      <viewAttribute hidden="true" id="JOIN$VARTYID$VARTYID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="TA_Class_Project.TA_HDB.synonyms::BOBJ_PRODUCT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODID" source="PRODID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODNAME" source="PRODNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODPRCE" source="PRODPRCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNTRYID" source="CNTRYID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VARTYID$VARTYID" source="VARTYID"/>
+    </input>
+    <input node="TA_Class_Project.TA_HDB.synonyms::BOBJ_VARIETY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VARTYID$VARTYID" source="VARTYID"/>
+    </input>
+    <joinAttribute name="JOIN$VARTYID$VARTYID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="ProdVar_Country" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="PRODID">
+        <descriptions defaultDescription="This column returns the catalog number of the product"/>
+      </viewAttribute>
+      <viewAttribute id="PRODNAME">
+        <descriptions defaultDescription="This column is the catalog name of the product"/>
+      </viewAttribute>
+      <viewAttribute id="PRODPRCE">
+        <descriptions defaultDescription="The catalog price in US Dollars, may be subject to change"/>
+      </viewAttribute>
+      <viewAttribute id="CNTRYNME">
+        <descriptions defaultDescription="CNTRYNME"/>
+      </viewAttribute>
+      <viewAttribute hidden="true" id="JOIN$CNTRYID$CNTRYID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="ProdVariety">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODID" source="PRODID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODNAME" source="PRODNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODPRCE" source="PRODPRCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CNTRYID$CNTRYID" source="CNTRYID"/>
+    </input>
+    <input node="TA_Class_Project.TA_HDB.synonyms::BOBJ_COUNTRY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNTRYNME" source="CNTRYNME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CNTRYID$CNTRYID" source="CNTRYID"/>
+    </input>
+    <joinAttribute name="JOIN$CNTRYID$CNTRYID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="ProdVar_Country">
+  <attributes>
+    <attribute id="PRODUCTID" order="2" displayAttribute="false" attributeHierarchyActive="false" key="true">
+      <descriptions defaultDescription="This column returns the catalog number of the product"/>
+      <keyMapping columnObjectName="ProdVar_Country" columnName="PRODID"/>
+    </attribute>
+    <attribute id="PRODUCT_PRICE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="The catalog price in US Dollars, may be subject to change"/>
+      <keyMapping columnObjectName="ProdVar_Country" columnName="PRODPRCE"/>
+    </attribute>
+    <attribute id="SUPPLIER_COUNTRY" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Supplier (Product) Country"/>
+      <keyMapping columnObjectName="ProdVar_Country" columnName="CNTRYNME"/>
+    </attribute>
+  
+    <attribute id="PRODUCT_NAME" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="This column is the catalog name of the product"/>
+  
+      <keyMapping columnObjectName="ProdVar_Country" columnName="PRODNAME"/>
+  
+    </attribute></attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="PROD_COMPANY" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>''</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="PRODUCT_TYPECODE" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="20">
+        <formula>'AUTOMOTIVE VEHICLE'</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="PRODUCT_CATEGORY" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>''</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="PRODUCT_WEIGHTMEASURE" order="5" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>'EA'</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="PRODUCT_WEIGHTUNIT" order="6" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>''</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="PRODUCTPICURL" order="8" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>''</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="SUPPLIERID" order="9" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>''</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="SUPPLIER_CITY" order="10" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>''</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="SUPPLIER_POSTALCODE" order="11" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>''</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="SUPPLIER_STREET" order="12" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>''</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="SUPPLIER_BUILDING" order="13" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>''</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="PRODUCT_DESCRIPTION" order="16" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>''</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+  </calculatedAttributes>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="ProdVariety" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="69" y="298"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="TA_Class_Project.TA_HDB.synonyms::BOBJ_PRODUCT" modelObjectNameSpace="ProdVariety" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="TA_Class_Project.TA_HDB.synonyms::BOBJ_VARIETY" modelObjectNameSpace="ProdVariety" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="ProdVar_Country" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="187" y="189"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="ProdVariety" modelObjectNameSpace="ProdVar_Country" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="TA_Class_Project.TA_HDB.synonyms::BOBJ_COUNTRY" modelObjectNameSpace="ProdVar_Country" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

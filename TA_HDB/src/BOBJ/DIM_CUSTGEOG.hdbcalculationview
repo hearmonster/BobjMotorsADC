@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="TA_Class_Project.TA_HDB.BOBJ::DIM_CUSTGEOG" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="DIM_CUSTGEOG"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="TA_Class_Project.TA_HDB.synonyms::BOBJ_CUSTOMER">
+    <resourceUri>TA_Class_Project.TA_HDB.synonyms::BOBJ_CUSTOMER</resourceUri>
+  </DataSource>
+  <DataSource id="TA_Class_Project.TA_HDB.synonyms::BOBJ_REGION">
+    <resourceUri>TA_Class_Project.TA_HDB.synonyms::BOBJ_REGION</resourceUri>
+  </DataSource>
+  <DataSource id="TA_Class_Project.TA_HDB.synonyms::BOBJ_COUNTRY">
+    <resourceUri>TA_Class_Project.TA_HDB.synonyms::BOBJ_COUNTRY</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="CustRegion" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CUSTID">
+        <descriptions defaultDescription="Customer ID in the accouting system"/>
+      </viewAttribute>
+      <viewAttribute id="CITY">
+        <descriptions defaultDescription="The city in which the customer lives"/>
+      </viewAttribute>
+      <viewAttribute id="STATE">
+        <descriptions defaultDescription="The state in which the customer lives"/>
+      </viewAttribute>
+      <viewAttribute id="ZIPCODE">
+        <descriptions defaultDescription="The zip code for the customer"/>
+      </viewAttribute>
+      <viewAttribute id="PHONENO">
+        <descriptions defaultDescription="The phone number of the customer"/>
+      </viewAttribute>
+      <viewAttribute id="REGNNAME">
+        <descriptions defaultDescription="The region name for the specified city"/>
+      </viewAttribute>
+      <viewAttribute id="CNTRYID">
+        <descriptions defaultDescription="CNTRYID"/>
+      </viewAttribute>
+      <viewAttribute id="ADDRESS">
+        <descriptions defaultDescription="The address of the customer"/>
+      </viewAttribute>
+      <viewAttribute id="LASTNAME">
+        <descriptions defaultDescription="Customer Last Name"/>
+      </viewAttribute>
+      <viewAttribute id="FRSTNAME">
+        <descriptions defaultDescription="Customer First Name"/>
+      </viewAttribute>
+      <viewAttribute hidden="true" id="JOIN$REGNID$REGNID"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="COMPANYNAME" datatype="VARCHAR" length="80" expressionLanguage="SQL">
+        <formula>CONCAT(CONCAT(&quot;FRSTNAME&quot;,' '),&quot;LASTNAME&quot;)</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="STREET" datatype="VARCHAR" length="30" expressionLanguage="SQL">
+        <formula>CONCAT(CONCAT(&quot;ADDRESS&quot;, ', '),&quot;STATE&quot;)</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <restrictedViewAttributes/>
+    <input node="TA_Class_Project.TA_HDB.synonyms::BOBJ_CUSTOMER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTID" source="CUSTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATE" source="STATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZIPCODE" source="ZIPCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PHONENO" source="PHONENO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS" source="ADDRESS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LASTNAME" source="LASTNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FRSTNAME" source="FRSTNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$REGNID$REGNID" source="REGNID"/>
+    </input>
+    <input node="TA_Class_Project.TA_HDB.synonyms::BOBJ_REGION">
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGNNAME" source="REGNNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNTRYID" source="CNTRYID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$REGNID$REGNID" source="REGNID"/>
+    </input>
+    <joinAttribute name="JOIN$REGNID$REGNID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="CustRegion_Country" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CUSTID">
+        <descriptions defaultDescription="Customer ID in the accouting system"/>
+      </viewAttribute>
+      <viewAttribute id="CITY">
+        <descriptions defaultDescription="The city in which the customer lives"/>
+      </viewAttribute>
+      <viewAttribute id="ZIPCODE">
+        <descriptions defaultDescription="The zip code for the customer"/>
+      </viewAttribute>
+      <viewAttribute id="PHONENO">
+        <descriptions defaultDescription="The phone number of the customer"/>
+      </viewAttribute>
+      <viewAttribute id="REGNNAME">
+        <descriptions defaultDescription="The region name for the specified city"/>
+      </viewAttribute>
+      <viewAttribute id="CNTRYID">
+        <descriptions defaultDescription="CNTRYID"/>
+      </viewAttribute>
+      <viewAttribute id="COMPANYNAME">
+        <descriptions defaultDescription="COMPANYNAME"/>
+      </viewAttribute>
+      <viewAttribute id="LASTNAME" transparentFilter="true">
+        <descriptions defaultDescription="Customer Last Name"/>
+      </viewAttribute>
+      <viewAttribute id="FRSTNAME" transparentFilter="true">
+        <descriptions defaultDescription="Customer First Name"/>
+      </viewAttribute>
+      <viewAttribute id="CNTRYNME">
+        <descriptions defaultDescription="CNTRYNME"/>
+      </viewAttribute>
+      <viewAttribute id="STREET">
+        <descriptions defaultDescription="STREET"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="CustRegion">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTID" source="CUSTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZIPCODE" source="ZIPCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PHONENO" source="PHONENO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGNNAME" source="REGNNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNTRYID" source="CNTRYID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANYNAME" source="COMPANYNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LASTNAME" source="LASTNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FRSTNAME" source="FRSTNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+    </input>
+    <input node="TA_Class_Project.TA_HDB.synonyms::BOBJ_COUNTRY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNTRYNME" source="CNTRYNME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNTRYID" source="CNTRYID"/>
+    </input>
+    <joinAttribute name="CNTRYID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="CustRegion_Country">
+  <attributes>
+    <attribute id="PARTNERID" order="1" displayAttribute="false" attributeHierarchyActive="false" key="true">
+      <descriptions defaultDescription="Customer ID in the accouting system"/>
+      <keyMapping columnObjectName="CustRegion_Country" columnName="CUSTID"/>
+    </attribute>
+    <attribute id="CITY" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="The city in which the customer lives"/>
+      <keyMapping columnObjectName="CustRegion_Country" columnName="CITY"/>
+    </attribute>
+    <attribute id="POSTALCODE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="The zip code for the customer"/>
+      <keyMapping columnObjectName="CustRegion_Country" columnName="ZIPCODE"/>
+    </attribute>
+    <attribute id="STREET" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STREET"/>
+      <keyMapping columnObjectName="CustRegion_Country" columnName="STREET"/>
+    </attribute>
+    <attribute id="COUNTRY" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CNTRYNME"/>
+      <keyMapping columnObjectName="CustRegion_Country" columnName="CNTRYNME"/>
+    </attribute>
+    <attribute id="REGION" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="The region name for the specified city"/>
+      <keyMapping columnObjectName="CustRegion_Country" columnName="REGNNAME"/>
+    </attribute>
+    <attribute id="PHONENUMBER" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="The phone number of the customer"/>
+      <keyMapping columnObjectName="CustRegion_Country" columnName="PHONENO"/>
+    </attribute>
+    <attribute id="COMPANYNAME" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANYNAME"/>
+      <keyMapping columnObjectName="CustRegion_Country" columnName="COMPANYNAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="BUILDING" order="5" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>''</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="PARTNERROLE" order="8" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>''</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="EMAILADDRESS" order="9" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>''</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+  </calculatedAttributes>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="CustRegion" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="97" y="310"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="TA_Class_Project.TA_HDB.synonyms::BOBJ_CUSTOMER" modelObjectNameSpace="CustRegion" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="TA_Class_Project.TA_HDB.synonyms::BOBJ_REGION" modelObjectNameSpace="CustRegion" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="CustRegion_Country" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="107" y="181"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="CustRegion" modelObjectNameSpace="CustRegion_Country" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="TA_Class_Project.TA_HDB.synonyms::BOBJ_COUNTRY" modelObjectNameSpace="CustRegion_Country" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

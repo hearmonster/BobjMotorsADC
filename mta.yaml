@@ -1,0 +1,38 @@
+ID: TA_Class_Project
+_schema-version: '2.0'
+version: 0.0.1
+modules:
+  - name: TA_HDB
+    type: hdb
+    path: TA_HDB
+    requires:
+      - name: hdi_TA_HDB
+        properties:
+          TARGET_CONTAINER: '~{hdi-container-name}'
+      - name: cross-container-service-1
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: ServiceName_1
+          service: '~{the-service-name}'
+      - name: cross-container-service-2
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: ServiceName_2
+          service: '~{bobj-service-name}'
+resources:
+  - name: hdi_TA_HDB
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: cross-container-service-1
+    parameters:
+      service-name: UPS
+    properties:
+      the-service-name: '${service-name}'
+    type: org.cloudfoundry.existing-service
+  - name: cross-container-service-2
+    parameters:
+      service-name: ADC_SERVICE
+    properties:
+      bobj-service-name: '${service-name}'
+    type: org.cloudfoundry.existing-service

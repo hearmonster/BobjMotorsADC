@@ -1,0 +1,104 @@
+namespace TA_Class_Project.TA_HDB;
+
+context MD {
+   type HistT {
+      CREATEDBY : association to Employees;
+      CREATEDAT : LocalDate;
+      CHANGEDBY : association to Employees;
+      CHANGEDAT : LocalDate;
+   };
+   type NameT {
+      FIRST    : hana.VARCHAR(40);
+      MIDDLE   : hana.VARCHAR(40);
+      LAST     : hana.VARCHAR(40);
+      INITIALS : String(10);
+   };
+   type SexT : String(1);
+   type ValidityT {
+      STARTDATE : LocalDate;
+      ENDDATE   : LocalDate;
+   }
+
+   entity Addresses {
+      key ADDRESSID   : String(10);
+          CITY        : hana.VARCHAR(40);
+          POSTALCODE  : String(10);
+          STREET      : String(60);
+          BUILDING    : String(10);
+          COUNTRY     : String(3);
+          REGION      : String(4);
+          ADDRESSTYPE : String(2);
+          VALIDITY    : ValidityT;
+          LATITUDE    : Double;
+          LONGITUDE   : Double;
+   }
+   technical configuration {
+      unload priority 8;
+   };
+   entity BusinessPartner {
+      key PARTNERID    : String(10);
+          PARTNERROLE  : String(3); //Business Partner Role
+          EMAILADDRESS : String(255);
+          PHONENUMBER  : String(30);
+          FAXNUMBER    : String(30) null;
+          WEBADDRESS   : String(1024);
+          ADDRESSES    : association to Addresses null;
+          COMPANYNAME  : String(80);
+          LEGALFORM    : String(10);
+          HISTORY      : HistT;
+          CURRENCY     : String(5);
+   }
+   technical configuration {
+      partition by HASH  (PARTNERID) Partitions GET_NUM_SERVERS();
+   };
+   entity Employees {
+      key EMPLOYEEID     : String(10);
+          NAME           : NameT null;
+          SEX            : SexT;
+          LANGUAGE       : String(1);
+          PHONENUMBER    : String(30) null;
+          EMAILADDRESS   : String(255);
+          LOGINNAME      : String(12);
+          ADDRESSES      : association to Addresses null;
+          VALIDITY       : ValidityT;
+          CURRENCY       : String(5);
+          SALARYAMOUNT   : Decimal(15,2);
+          ACCOUNTNUMBER  : String(10);
+          BANKID         : String(10);
+          BANKNAME       : String(255);
+          EMPLOYEEPICURL : String(255);
+          FULLNAME       : String(100) = NAME.FIRST || ' ' || NAME.LAST;
+   };
+   entity Products {
+      key PRODUCTID     : String(10);
+          TYPECODE      : String(2);
+          CATEGORY      : hana.VARCHAR(40);
+          HISTORY       : HistT;
+          NAMEID        : String(10);
+          DESCID        : String(10);
+          SUPPLIER      : association to MD.BusinessPartner;
+          TAXTARIFFCODE : Integer;
+          QUANTITYUNIT  : String(3);
+          WEIGHTMEASURE : Decimal(13, 3);
+          WEIGHTUNIT    : String(3);
+          CURRENCY      : String(5);
+          PRICE         : Decimal(15, 2);
+          PRODUCTPICURL : String(255) null;
+          WIDTH         : Decimal(13, 3);
+          DEPTH         : Decimal(13, 3);
+          HEIGHT        : Decimal(13, 3);
+          DIMENSIONUNIT : String(3);
+   }
+   technical configuration {
+      fulltext index FTI_CATEGORY on (CATEGORY)
+         async
+         search only off;
+   };
+   entity productLog {
+      key PRODUCTID : String(10);
+      key LOGID     : Integer;
+      key DATETIME  : UTCDateTime;
+      key USERNAME  : String(20);
+          LOGTEXT   : String(500);
+   };
+};

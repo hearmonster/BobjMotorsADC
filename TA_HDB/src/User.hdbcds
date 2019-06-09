@@ -1,0 +1,10 @@
+namespace TA_Class_Project.TA_HDB;
+
+context User {
+   entity Details {
+      key PERS_NO   : String(10);
+          FIRSTNAME : hana.VARCHAR(40);
+          LASTNAME  : hana.VARCHAR(40);
+          E_MAIL    : String(255);
+   };
+};

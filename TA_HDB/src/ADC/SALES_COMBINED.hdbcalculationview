@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="TA_Class_Project.TA_HDB.ADC::SALES_COMBINED" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Sales of both BOBJ and ECC combined"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="TA_Class_Project.TA_HDB.BOBJ::FACT_SALE">
+    <resourceUri>TA_Class_Project.TA_HDB.BOBJ::FACT_SALE</resourceUri>
+  </DataSource>
+  <DataSource id="TA_Class_Project.TA_HDB::sales_order_lite2">
+    <resourceUri>TA_Class_Project.TA_HDB::sales_order_lite2</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes>
+      <viewAttribute id="PARTNERID">
+        <descriptions defaultDescription="PARTNERID"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCTID">
+        <descriptions defaultDescription="PRODUCTID"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_TYPECODE">
+        <descriptions defaultDescription="PRODUCT_TYPECODE"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_CATEGORY">
+        <descriptions defaultDescription="PRODUCT_CATEGORY"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_WEIGHTMEASURE">
+        <descriptions defaultDescription="PRODUCT_WEIGHTMEASURE"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_WEIGHTUNIT">
+        <descriptions defaultDescription="PRODUCT_WEIGHTUNIT"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_PRICE">
+        <descriptions defaultDescription="PRODUCT_PRICE"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCTPICURL">
+        <descriptions defaultDescription="PRODUCTPICURL"/>
+      </viewAttribute>
+      <viewAttribute id="SUPPLIERID">
+        <descriptions defaultDescription="SUPPLIERID"/>
+      </viewAttribute>
+      <viewAttribute id="PROD_COMPANYNAME">
+        <descriptions defaultDescription="PROD_COMPANYNAME"/>
+      </viewAttribute>
+      <viewAttribute id="SUPPLIER_CITY">
+        <descriptions defaultDescription="SUPPLIER_CITY"/>
+      </viewAttribute>
+      <viewAttribute id="SUPPLIER_POSTALCODE">
+        <descriptions defaultDescription="SUPPLIER_POSTALCODE"/>
+      </viewAttribute>
+      <viewAttribute id="SUPPLIER_STREET">
+        <descriptions defaultDescription="SUPPLIER_STREET"/>
+      </viewAttribute>
+      <viewAttribute id="SUPPLIER_BUILDING">
+        <descriptions defaultDescription="SUPPLIER_BUILDING"/>
+      </viewAttribute>
+      <viewAttribute id="SUPPLIER_COUNTRY">
+        <descriptions defaultDescription="SUPPLIER_COUNTRY"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_NAME">
+        <descriptions defaultDescription="PRODUCT_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_DESCRIPTION">
+        <descriptions defaultDescription="PRODUCT_DESCRIPTION"/>
+      </viewAttribute>
+      <viewAttribute id="CITY">
+        <descriptions defaultDescription="CITY"/>
+      </viewAttribute>
+      <viewAttribute id="POSTALCODE">
+        <descriptions defaultDescription="POSTALCODE"/>
+      </viewAttribute>
+      <viewAttribute id="STREET">
+        <descriptions defaultDescription="STREET"/>
+      </viewAttribute>
+      <viewAttribute id="BUILDING">
+        <descriptions defaultDescription="BUILDING"/>
+      </viewAttribute>
+      <viewAttribute id="COUNTRY">
+        <descriptions defaultDescription="COUNTRY"/>
+      </viewAttribute>
+      <viewAttribute id="REGION">
+        <descriptions defaultDescription="REGION"/>
+      </viewAttribute>
+      <viewAttribute id="PARTNERROLE">
+        <descriptions defaultDescription="PARTNERROLE"/>
+      </viewAttribute>
+      <viewAttribute id="EMAILADDRESS">
+        <descriptions defaultDescription="EMAILADDRESS"/>
+      </viewAttribute>
+      <viewAttribute id="PHONENUMBER">
+        <descriptions defaultDescription="PHONENUMBER"/>
+      </viewAttribute>
+      <viewAttribute id="BUYER_COMPANYNAME">
+        <descriptions defaultDescription="BUYER_COMPANYNAME"/>
+      </viewAttribute>
+      <viewAttribute id="DATETIMESTAMP">
+        <descriptions defaultDescription="DATETIMESTAMP"/>
+      </viewAttribute>
+      <viewAttribute id="DATESQL">
+        <descriptions defaultDescription="DATESQL"/>
+      </viewAttribute>
+      <viewAttribute id="DATETIME_SAP">
+        <descriptions defaultDescription="DATETIME_SAP"/>
+      </viewAttribute>
+      <viewAttribute id="DATE_SAP">
+        <descriptions defaultDescription="DATE_SAP"/>
+      </viewAttribute>
+      <viewAttribute id="YEAR">
+        <descriptions defaultDescription="YEAR"/>
+      </viewAttribute>
+      <viewAttribute id="QUARTER">
+        <descriptions defaultDescription="QUARTER"/>
+      </viewAttribute>
+      <viewAttribute id="MONTH">
+        <descriptions defaultDescription="MONTH"/>
+      </viewAttribute>
+      <viewAttribute id="WEEK">
+        <descriptions defaultDescription="WEEK"/>
+      </viewAttribute>
+      <viewAttribute id="WEEK_YEAR">
+        <descriptions defaultDescription="WEEK_YEAR"/>
+      </viewAttribute>
+      <viewAttribute id="DAY_OF_WEEK">
+        <descriptions defaultDescription="DAY_OF_WEEK"/>
+      </viewAttribute>
+      <viewAttribute id="DAY">
+        <descriptions defaultDescription="DAY"/>
+      </viewAttribute>
+      <viewAttribute id="HOUR">
+        <descriptions defaultDescription="HOUR"/>
+      </viewAttribute>
+      <viewAttribute id="MINUTE">
+        <descriptions defaultDescription="MINUTE"/>
+      </viewAttribute>
+      <viewAttribute id="SECOND">
+        <descriptions defaultDescription="SECOND"/>
+      </viewAttribute>
+      <viewAttribute id="CALQUARTER">
+        <descriptions defaultDescription="CALQUARTER"/>
+      </viewAttribute>
+      <viewAttribute id="CALMONTH">
+        <descriptions defaultDescription="CALMONTH"/>
+      </viewAttribute>
+      <viewAttribute id="CALWEEK">
+        <descriptions defaultDescription="CALWEEK"/>
+      </viewAttribute>
+      <viewAttribute id="YEAR_INT">
+        <descriptions defaultDescription="YEAR_INT"/>
+      </viewAttribute>
+      <viewAttribute id="QUARTER_INT">
+        <descriptions defaultDescription="QUARTER_INT"/>
+      </viewAttribute>
+      <viewAttribute id="MONTH_INT">
+        <descriptions defaultDescription="MONTH_INT"/>
+      </viewAttribute>
+      <viewAttribute id="WEEK_INT">
+        <descriptions defaultDescription="WEEK_INT"/>
+      </viewAttribute>
+      <viewAttribute id="WEEK_YEAR_INT">
+        <descriptions defaultDescription="WEEK_YEAR_INT"/>
+      </viewAttribute>
+      <viewAttribute id="DAY_OF_WEEK_INT">
+        <descriptions defaultDescription="DAY_OF_WEEK_INT"/>
+      </viewAttribute>
+      <viewAttribute id="DAY_INT">
+        <descriptions defaultDescription="DAY_INT"/>
+      </viewAttribute>
+      <viewAttribute id="SALESORDERID">
+        <descriptions defaultDescription="SALESORDERID"/>
+      </viewAttribute>
+      <viewAttribute id="SALESORDERITEM">
+        <descriptions defaultDescription="SALESORDERITEM"/>
+      </viewAttribute>
+      <viewAttribute id="NETAMOUNT" aggregationType="sum">
+        <descriptions defaultDescription="NETAMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="QUANTITY" aggregationType="sum">
+        <descriptions defaultDescription="QUANTITY"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="TA_Class_Project.TA_HDB.BOBJ::FACT_SALE" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERID" source="PARTNERID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTID" source="PRODUCTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_TYPECODE" source="PRODUCT_TYPECODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_CATEGORY" source="PRODUCT_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_WEIGHTMEASURE" source="PRODUCT_WEIGHTMEASURE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_WEIGHTUNIT" source="PRODUCT_WEIGHTUNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PRICE" source="PRODUCT_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTPICURL" source="PRODUCTPICURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIERID" source="SUPPLIERID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROD_COMPANYNAME" source="PROD_COMPANY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_CITY" source="SUPPLIER_CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_POSTALCODE" source="SUPPLIER_POSTALCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_STREET" source="SUPPLIER_STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_BUILDING" source="SUPPLIER_BUILDING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_COUNTRY" source="SUPPLIER_COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_DESCRIPTION" source="PRODUCT_DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTALCODE" source="POSTALCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUILDING" source="BUILDING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERROLE" source="PARTNERROLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMAILADDRESS" source="EMAILADDRESS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PHONENUMBER" source="PHONENUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUYER_COMPANYNAME" source="COMPANYNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATETIMESTAMP" source="DATETIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATESQL" source="DATESQL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATETIME_SAP" source="DATETIME_SAP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SAP" source="DATE_SAP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK" source="WEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK_YEAR" source="WEEK_YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY_OF_WEEK" source="DAY_OF_WEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY" source="DAY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOUR" source="HOUR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MINUTE" source="MINUTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SECOND" source="SECOND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_INT" source="YEAR_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER_INT" source="QUARTER_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_INT" source="MONTH_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK_INT" source="WEEK_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK_YEAR_INT" source="WEEK_YEAR_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY_OF_WEEK_INT" source="DAY_OF_WEEK_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY_INT" source="DAY_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALESORDERID" source="SALESORDERID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALESORDERITEM" source="SALESORDERITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NETAMOUNT" source="NETAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTITY" source="QUANTITY"/>
+    </input>
+    <input node="TA_Class_Project.TA_HDB::sales_order_lite2" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERID" source="PARTNERID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTID" source="PRODUCTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_TYPECODE" source="PRODUCT_TYPECODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_CATEGORY" source="PRODUCT_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_WEIGHTMEASURE" source="PRODUCT_WEIGHTMEASURE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_WEIGHTUNIT" source="PRODUCT_WEIGHTUNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PRICE" source="PRODUCT_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTPICURL" source="PRODUCTPICURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIERID" source="SUPPLIERID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROD_COMPANYNAME" source="PROD_COMPANYNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_CITY" source="SUPPLIER_CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_POSTALCODE" source="SUPPLIER_POSTALCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_STREET" source="SUPPLIER_STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_BUILDING" source="SUPPLIER_BUILDING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_COUNTRY" source="SUPPLIER_COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_DESCRIPTION" source="PRODUCT_DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTALCODE" source="POSTALCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUILDING" source="BUILDING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERROLE" source="PARTNERROLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMAILADDRESS" source="EMAILADDRESS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PHONENUMBER" source="PHONENUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUYER_COMPANYNAME" source="BUYER_COMPANYNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATETIMESTAMP" source="DATETIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATESQL" source="DATESQL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATETIME_SAP" source="DATETIME_SAP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SAP" source="DATE_SAP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK" source="WEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK_YEAR" source="WEEK_YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY_OF_WEEK" source="DAY_OF_WEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY" source="DAY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOUR" source="HOUR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MINUTE" source="MINUTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SECOND" source="SECOND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_INT" source="YEAR_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER_INT" source="QUARTER_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_INT" source="MONTH_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK_INT" source="WEEK_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK_YEAR_INT" source="WEEK_YEAR_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY_OF_WEEK_INT" source="DAY_OF_WEEK_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY_INT" source="DAY_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALESORDERID" source="SALESORDERID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALESORDERITEM" source="SALESORDERITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NETAMOUNT" source="NETAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTITY" source="QUANTITY"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Union_1">
+  <attributes>
+    <attribute id="PARTNERID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNERID"/>
+      <keyMapping columnObjectName="Union_1" columnName="PARTNERID"/>
+    </attribute>
+    <attribute id="PRODUCTID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCTID"/>
+      <keyMapping columnObjectName="Union_1" columnName="PRODUCTID"/>
+    </attribute>
+    <attribute id="PRODUCT_TYPECODE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_TYPECODE"/>
+      <keyMapping columnObjectName="Union_1" columnName="PRODUCT_TYPECODE"/>
+    </attribute>
+    <attribute id="PRODUCT_CATEGORY" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_CATEGORY"/>
+      <keyMapping columnObjectName="Union_1" columnName="PRODUCT_CATEGORY"/>
+    </attribute>
+    <attribute id="PRODUCT_WEIGHTMEASURE" order="5" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_WEIGHTMEASURE"/>
+      <keyMapping columnObjectName="Union_1" columnName="PRODUCT_WEIGHTMEASURE"/>
+    </attribute>
+    <attribute id="PRODUCT_WEIGHTUNIT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_WEIGHTUNIT"/>
+      <keyMapping columnObjectName="Union_1" columnName="PRODUCT_WEIGHTUNIT"/>
+    </attribute>
+    <attribute id="PRODUCTPICURL" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCTPICURL"/>
+      <keyMapping columnObjectName="Union_1" columnName="PRODUCTPICURL"/>
+    </attribute>
+    <attribute id="SUPPLIERID" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIERID"/>
+      <keyMapping columnObjectName="Union_1" columnName="SUPPLIERID"/>
+    </attribute>
+    <attribute id="PROD_COMPANYNAME" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROD_COMPANYNAME"/>
+      <keyMapping columnObjectName="Union_1" columnName="PROD_COMPANYNAME"/>
+    </attribute>
+    <attribute id="SUPPLIER_CITY" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_CITY"/>
+      <keyMapping columnObjectName="Union_1" columnName="SUPPLIER_CITY"/>
+    </attribute>
+    <attribute id="SUPPLIER_POSTALCODE" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_POSTALCODE"/>
+      <keyMapping columnObjectName="Union_1" columnName="SUPPLIER_POSTALCODE"/>
+    </attribute>
+    <attribute id="SUPPLIER_STREET" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_STREET"/>
+      <keyMapping columnObjectName="Union_1" columnName="SUPPLIER_STREET"/>
+    </attribute>
+    <attribute id="SUPPLIER_BUILDING" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_BUILDING"/>
+      <keyMapping columnObjectName="Union_1" columnName="SUPPLIER_BUILDING"/>
+    </attribute>
+    <attribute id="SUPPLIER_COUNTRY" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_COUNTRY"/>
+      <keyMapping columnObjectName="Union_1" columnName="SUPPLIER_COUNTRY"/>
+    </attribute>
+    <attribute id="PRODUCT_NAME" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_NAME"/>
+      <keyMapping columnObjectName="Union_1" columnName="PRODUCT_NAME"/>
+    </attribute>
+    <attribute id="PRODUCT_DESCRIPTION" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_DESCRIPTION"/>
+      <keyMapping columnObjectName="Union_1" columnName="PRODUCT_DESCRIPTION"/>
+    </attribute>
+    <attribute id="CITY" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITY"/>
+      <keyMapping columnObjectName="Union_1" columnName="CITY"/>
+    </attribute>
+    <attribute id="POSTALCODE" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POSTALCODE"/>
+      <keyMapping columnObjectName="Union_1" columnName="POSTALCODE"/>
+    </attribute>
+    <attribute id="STREET" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STREET"/>
+      <keyMapping columnObjectName="Union_1" columnName="STREET"/>
+    </attribute>
+    <attribute id="BUILDING" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUILDING"/>
+      <keyMapping columnObjectName="Union_1" columnName="BUILDING"/>
+    </attribute>
+    <attribute id="COUNTRY" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY"/>
+      <keyMapping columnObjectName="Union_1" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="REGION" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGION"/>
+      <keyMapping columnObjectName="Union_1" columnName="REGION"/>
+    </attribute>
+    <attribute id="PARTNERROLE" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNERROLE"/>
+      <keyMapping columnObjectName="Union_1" columnName="PARTNERROLE"/>
+    </attribute>
+    <attribute id="EMAILADDRESS" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMAILADDRESS"/>
+      <keyMapping columnObjectName="Union_1" columnName="EMAILADDRESS"/>
+    </attribute>
+    <attribute id="PHONENUMBER" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PHONENUMBER"/>
+      <keyMapping columnObjectName="Union_1" columnName="PHONENUMBER"/>
+    </attribute>
+    <attribute id="BUYER_COMPANYNAME" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUYER_COMPANYNAME"/>
+      <keyMapping columnObjectName="Union_1" columnName="BUYER_COMPANYNAME"/>
+    </attribute>
+    <attribute id="DATETIMESTAMP" order="28" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATETIMESTAMP"/>
+      <keyMapping columnObjectName="Union_1" columnName="DATETIMESTAMP"/>
+    </attribute>
+    <attribute id="DATESQL" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATESQL"/>
+      <keyMapping columnObjectName="Union_1" columnName="DATESQL"/>
+    </attribute>
+    <attribute id="DATETIME_SAP" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATETIME_SAP"/>
+      <keyMapping columnObjectName="Union_1" columnName="DATETIME_SAP"/>
+    </attribute>
+    <attribute id="DATE_SAP" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE_SAP"/>
+      <keyMapping columnObjectName="Union_1" columnName="DATE_SAP"/>
+    </attribute>
+    <attribute id="YEAR" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyMapping columnObjectName="Union_1" columnName="YEAR"/>
+    </attribute>
+    <attribute id="QUARTER" order="33" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUARTER"/>
+      <keyMapping columnObjectName="Union_1" columnName="QUARTER"/>
+    </attribute>
+    <attribute id="MONTH" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MONTH"/>
+      <keyMapping columnObjectName="Union_1" columnName="MONTH"/>
+    </attribute>
+    <attribute id="WEEK" order="35" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WEEK"/>
+      <keyMapping columnObjectName="Union_1" columnName="WEEK"/>
+    </attribute>
+    <attribute id="WEEK_YEAR" order="36" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WEEK_YEAR"/>
+      <keyMapping columnObjectName="Union_1" columnName="WEEK_YEAR"/>
+    </attribute>
+    <attribute id="DAY_OF_WEEK" order="37" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAY_OF_WEEK"/>
+      <keyMapping columnObjectName="Union_1" columnName="DAY_OF_WEEK"/>
+    </attribute>
+    <attribute id="DAY" order="38" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAY"/>
+      <keyMapping columnObjectName="Union_1" columnName="DAY"/>
+    </attribute>
+    <attribute id="HOUR" order="39" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HOUR"/>
+      <keyMapping columnObjectName="Union_1" columnName="HOUR"/>
+    </attribute>
+    <attribute id="MINUTE" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MINUTE"/>
+      <keyMapping columnObjectName="Union_1" columnName="MINUTE"/>
+    </attribute>
+    <attribute id="SECOND" order="41" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SECOND"/>
+      <keyMapping columnObjectName="Union_1" columnName="SECOND"/>
+    </attribute>
+    <attribute id="CALQUARTER" order="42" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CALQUARTER"/>
+      <keyMapping columnObjectName="Union_1" columnName="CALQUARTER"/>
+    </attribute>
+    <attribute id="CALMONTH" order="43" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CALMONTH"/>
+      <keyMapping columnObjectName="Union_1" columnName="CALMONTH"/>
+    </attribute>
+    <attribute id="CALWEEK" order="44" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CALWEEK"/>
+      <keyMapping columnObjectName="Union_1" columnName="CALWEEK"/>
+    </attribute>
+    <attribute id="YEAR_INT" order="45" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR_INT"/>
+      <keyMapping columnObjectName="Union_1" columnName="YEAR_INT"/>
+    </attribute>
+    <attribute id="QUARTER_INT" order="46" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUARTER_INT"/>
+      <keyMapping columnObjectName="Union_1" columnName="QUARTER_INT"/>
+    </attribute>
+    <attribute id="MONTH_INT" order="47" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MONTH_INT"/>
+      <keyMapping columnObjectName="Union_1" columnName="MONTH_INT"/>
+    </attribute>
+    <attribute id="WEEK_INT" order="48" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WEEK_INT"/>
+      <keyMapping columnObjectName="Union_1" columnName="WEEK_INT"/>
+    </attribute>
+    <attribute id="WEEK_YEAR_INT" order="49" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WEEK_YEAR_INT"/>
+      <keyMapping columnObjectName="Union_1" columnName="WEEK_YEAR_INT"/>
+    </attribute>
+    <attribute id="DAY_OF_WEEK_INT" order="50" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAY_OF_WEEK_INT"/>
+      <keyMapping columnObjectName="Union_1" columnName="DAY_OF_WEEK_INT"/>
+    </attribute>
+    <attribute id="DAY_INT" order="51" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAY_INT"/>
+      <keyMapping columnObjectName="Union_1" columnName="DAY_INT"/>
+    </attribute>
+    <attribute id="SALESORDERID" order="52" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALESORDERID"/>
+      <keyMapping columnObjectName="Union_1" columnName="SALESORDERID"/>
+    </attribute>
+    <attribute id="SALESORDERITEM" order="53" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALESORDERITEM"/>
+      <keyMapping columnObjectName="Union_1" columnName="SALESORDERITEM"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="PRODUCT_PRICE" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PRODUCT_PRICE"/>
+      <measureMapping columnObjectName="Union_1" columnName="PRODUCT_PRICE"/>
+    </measure>
+    <measure id="NETAMOUNT" order="54" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NETAMOUNT"/>
+      <measureMapping columnObjectName="Union_1" columnName="NETAMOUNT"/>
+    </measure>
+    <measure id="QUANTITY" order="55" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="QUANTITY"/>
+      <measureMapping columnObjectName="Union_1" columnName="QUANTITY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="80" y="192"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

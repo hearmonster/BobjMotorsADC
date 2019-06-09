@@ -1,0 +1,20 @@
+{
+  "ADC_SERVICE": { 
+    "object_owner" : {
+      "schema_privileges":[
+        {
+          "reference":"BOBJ",
+          "privileges_with_grant_option":["SELECT", "SELECT METADATA"]
+        }
+      ]
+    },
+    "application_user" : {
+      "schema_privileges":[
+        {
+          "reference":"BOBJ",
+          "privileges_with_grant_option":["SELECT", "SELECT METADATA"]
+        }
+      ]
+    }
+  }
+}
