@@ -1,257 +1,257 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="TA_Class_Project.TA_HDB::SALES_ORDER_YOY" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
-<descriptions defaultDescription="Sales Orders YearOnYear"/>
-<localVariables/>
-<variableMappings/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" dataCategory="CUBE" cacheInvalidationPeriod="NONE" id="TA_Class_Project.TA_HDB::SALES_ORDER_YOY" applyPrivilegeType="NONE" outputViewType="Aggregation" enforceSqlExecution="false">
+<descriptions defaultDescription="Sales Orders YearOnYear"></descriptions>
+<localVariables></localVariables>
+<variableMappings></variableMappings>
 <dataSources>
-  <DataSource id="TA_Class_Project.TA_HDB::sales_order_lite2">
-    <resourceUri>TA_Class_Project.TA_HDB::sales_order_lite2</resourceUri>
+  <DataSource id="TA_Class_Project.TA_HDB::SALES_ORDER_LITE">
+    <resourceUri>TA_Class_Project.TA_HDB::SALES_ORDER_LITE</resourceUri>
   </DataSource>
-  <DataSource id="YR2016$$$$TA_Class_Project.TA_HDB::sales_order_lite2$$">
-    <resourceUri>TA_Class_Project.TA_HDB::sales_order_lite2</resourceUri>
+  <DataSource id="YR2016$$$$TA_Class_Project.TA_HDB::SALES_ORDER_LITE$$">
+    <resourceUri>TA_Class_Project.TA_HDB::SALES_ORDER_LITE</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
   <calculationView xsi:type="Calculation:UnionView" id="Union_1">
     <viewAttributes>
       <viewAttribute id="PRODUCT_NAME">
-        <descriptions defaultDescription="PRODUCT_NAME"/>
+        <descriptions defaultDescription="PRODUCT_NAME"></descriptions>
       </viewAttribute>
       <viewAttribute id="PRODUCT_CATEGORY">
-        <descriptions defaultDescription="PRODUCT_CATEGORY"/>
+        <descriptions defaultDescription="PRODUCT_CATEGORY"></descriptions>
       </viewAttribute>
       <viewAttribute id="PROD_COMPANYNAME">
-        <descriptions defaultDescription="PROD_COMPANYNAME"/>
+        <descriptions defaultDescription="PROD_COMPANYNAME"></descriptions>
       </viewAttribute>
       <viewAttribute id="SUPPLIER_COUNTRY">
-        <descriptions defaultDescription="SUPPLIER_COUNTRY"/>
+        <descriptions defaultDescription="SUPPLIER_COUNTRY"></descriptions>
       </viewAttribute>
       <viewAttribute id="SUPPLIER_CITY">
-        <descriptions defaultDescription="SUPPLIER_CITY"/>
+        <descriptions defaultDescription="SUPPLIER_CITY"></descriptions>
       </viewAttribute>
       <viewAttribute id="BUYER_COMPANYNAME">
-        <descriptions defaultDescription="BUYER_COMPANYNAME"/>
+        <descriptions defaultDescription="BUYER_COMPANYNAME"></descriptions>
       </viewAttribute>
       <viewAttribute id="QUARTER">
-        <descriptions defaultDescription="QUARTER"/>
+        <descriptions defaultDescription="QUARTER"></descriptions>
       </viewAttribute>
       <viewAttribute id="MONTH">
-        <descriptions defaultDescription="MONTH"/>
+        <descriptions defaultDescription="MONTH"></descriptions>
       </viewAttribute>
-      <viewAttribute id="NETAMOUNT_2015" aggregationType="sum">
-        <descriptions defaultDescription="NETAMOUNT_2015"/>
+      <viewAttribute aggregationType="sum" id="NETAMOUNT_2015">
+        <descriptions defaultDescription="NETAMOUNT_2015"></descriptions>
       </viewAttribute>
-      <viewAttribute id="NETAMOUNT_2016" aggregationType="sum">
-        <descriptions defaultDescription="NETAMOUNT_2016"/>
+      <viewAttribute aggregationType="sum" id="NETAMOUNT_2016">
+        <descriptions defaultDescription="NETAMOUNT_2016"></descriptions>
       </viewAttribute>
     </viewAttributes>
-    <calculatedViewAttributes/>
-    <restrictedViewAttributes/>
+    <calculatedViewAttributes></calculatedViewAttributes>
+    <restrictedViewAttributes></restrictedViewAttributes>
     <input node="YR2015">
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_CATEGORY" source="PRODUCT_CATEGORY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PROD_COMPANYNAME" source="PROD_COMPANYNAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_COUNTRY" source="SUPPLIER_COUNTRY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_CITY" source="SUPPLIER_CITY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BUYER_COMPANYNAME" source="BUYER_COMPANYNAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NETAMOUNT_2015" source="NETAMOUNT_2015"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NETAMOUNT_2016" source="NETAMOUNT_2016"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PRODUCT_NAME" target="PRODUCT_NAME"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PRODUCT_CATEGORY" target="PRODUCT_CATEGORY"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PROD_COMPANYNAME" target="PROD_COMPANYNAME"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="SUPPLIER_COUNTRY" target="SUPPLIER_COUNTRY"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="SUPPLIER_CITY" target="SUPPLIER_CITY"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="BUYER_COMPANYNAME" target="BUYER_COMPANYNAME"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="QUARTER" target="QUARTER"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="MONTH" target="MONTH"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NETAMOUNT_2015" target="NETAMOUNT_2015"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NETAMOUNT_2016" target="NETAMOUNT_2016"></mapping>
     </input>
     <input node="YR2016">
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_CATEGORY" source="PRODUCT_CATEGORY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PROD_COMPANYNAME" source="PROD_COMPANYNAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_COUNTRY" source="SUPPLIER_COUNTRY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_CITY" source="SUPPLIER_CITY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BUYER_COMPANYNAME" source="BUYER_COMPANYNAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NETAMOUNT_2015" source="NETAMOUNT_2015"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NETAMOUNT_2016" source="NETAMOUNT_2016"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PRODUCT_NAME" target="PRODUCT_NAME"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PRODUCT_CATEGORY" target="PRODUCT_CATEGORY"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PROD_COMPANYNAME" target="PROD_COMPANYNAME"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="SUPPLIER_COUNTRY" target="SUPPLIER_COUNTRY"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="SUPPLIER_CITY" target="SUPPLIER_CITY"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="BUYER_COMPANYNAME" target="BUYER_COMPANYNAME"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="QUARTER" target="QUARTER"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="MONTH" target="MONTH"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NETAMOUNT_2015" target="NETAMOUNT_2015"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NETAMOUNT_2016" target="NETAMOUNT_2016"></mapping>
     </input>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="YR2015" filterExpressionLanguage="SQL">
     <viewAttributes>
       <viewAttribute id="PRODUCT_NAME">
-        <descriptions defaultDescription="PRODUCT_NAME"/>
+        <descriptions defaultDescription="PRODUCT_NAME"></descriptions>
       </viewAttribute>
       <viewAttribute id="PRODUCT_CATEGORY">
-        <descriptions defaultDescription="PRODUCT_CATEGORY"/>
+        <descriptions defaultDescription="PRODUCT_CATEGORY"></descriptions>
       </viewAttribute>
       <viewAttribute id="PROD_COMPANYNAME">
-        <descriptions defaultDescription="PROD_COMPANYNAME"/>
+        <descriptions defaultDescription="PROD_COMPANYNAME"></descriptions>
       </viewAttribute>
       <viewAttribute id="SUPPLIER_COUNTRY">
-        <descriptions defaultDescription="SUPPLIER_COUNTRY"/>
+        <descriptions defaultDescription="SUPPLIER_COUNTRY"></descriptions>
       </viewAttribute>
       <viewAttribute id="SUPPLIER_CITY">
-        <descriptions defaultDescription="SUPPLIER_CITY"/>
+        <descriptions defaultDescription="SUPPLIER_CITY"></descriptions>
       </viewAttribute>
       <viewAttribute id="BUYER_COMPANYNAME">
-        <descriptions defaultDescription="BUYER_COMPANYNAME"/>
+        <descriptions defaultDescription="BUYER_COMPANYNAME"></descriptions>
       </viewAttribute>
       <viewAttribute id="YEAR">
-        <descriptions defaultDescription="YEAR"/>
+        <descriptions defaultDescription="YEAR"></descriptions>
       </viewAttribute>
       <viewAttribute id="QUARTER">
-        <descriptions defaultDescription="QUARTER"/>
+        <descriptions defaultDescription="QUARTER"></descriptions>
       </viewAttribute>
       <viewAttribute id="MONTH">
-        <descriptions defaultDescription="MONTH"/>
+        <descriptions defaultDescription="MONTH"></descriptions>
       </viewAttribute>
       <viewAttribute id="NETAMOUNT">
-        <descriptions defaultDescription="NETAMOUNT"/>
+        <descriptions defaultDescription="NETAMOUNT"></descriptions>
       </viewAttribute>
     </viewAttributes>
     <calculatedViewAttributes>
-      <calculatedViewAttribute id="NETAMOUNT_2015" datatype="DECIMAL" length="10" scale="2" expressionLanguage="SQL">
-        <formula>&quot;NETAMOUNT&quot;</formula>
+      <calculatedViewAttribute datatype="DECIMAL" length="10" expressionLanguage="SQL" scale="2" id="NETAMOUNT_2015">
+        <formula>"NETAMOUNT"</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="NETAMOUNT_2016" datatype="DECIMAL" length="10" scale="2" expressionLanguage="SQL">
+      <calculatedViewAttribute datatype="DECIMAL" length="10" expressionLanguage="SQL" scale="2" id="NETAMOUNT_2016">
         <formula>0.00</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
-    <restrictedViewAttributes/>
-    <input node="TA_Class_Project.TA_HDB::sales_order_lite2">
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_CATEGORY" source="PRODUCT_CATEGORY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PROD_COMPANYNAME" source="PROD_COMPANYNAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_COUNTRY" source="SUPPLIER_COUNTRY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_CITY" source="SUPPLIER_CITY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BUYER_COMPANYNAME" source="BUYER_COMPANYNAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NETAMOUNT" source="NETAMOUNT"/>
+    <restrictedViewAttributes></restrictedViewAttributes>
+    <input node="TA_Class_Project.TA_HDB::SALES_ORDER_LITE">
+      <mapping xsi:type="Calculation:AttributeMapping" source="PRODUCT_NAME" target="PRODUCT_NAME"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PRODUCT_CATEGORY" target="PRODUCT_CATEGORY"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PROD_COMPANYNAME" target="PROD_COMPANYNAME"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="SUPPLIER_COUNTRY" target="SUPPLIER_COUNTRY"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="SUPPLIER_CITY" target="SUPPLIER_CITY"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="BUYER_COMPANYNAME" target="BUYER_COMPANYNAME"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="YEAR" target="YEAR"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="QUARTER" target="QUARTER"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="MONTH" target="MONTH"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NETAMOUNT" target="NETAMOUNT"></mapping>
     </input>
-    <filter>&quot;YEAR&quot; = 2015</filter>
+    <filter>"YEAR" = 2015</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="YR2016" filterExpressionLanguage="SQL">
     <viewAttributes>
       <viewAttribute id="PRODUCT_NAME">
-        <descriptions defaultDescription="PRODUCT_NAME"/>
+        <descriptions defaultDescription="PRODUCT_NAME"></descriptions>
       </viewAttribute>
       <viewAttribute id="PRODUCT_CATEGORY">
-        <descriptions defaultDescription="PRODUCT_CATEGORY"/>
+        <descriptions defaultDescription="PRODUCT_CATEGORY"></descriptions>
       </viewAttribute>
       <viewAttribute id="PROD_COMPANYNAME">
-        <descriptions defaultDescription="PROD_COMPANYNAME"/>
+        <descriptions defaultDescription="PROD_COMPANYNAME"></descriptions>
       </viewAttribute>
       <viewAttribute id="SUPPLIER_COUNTRY">
-        <descriptions defaultDescription="SUPPLIER_COUNTRY"/>
+        <descriptions defaultDescription="SUPPLIER_COUNTRY"></descriptions>
       </viewAttribute>
       <viewAttribute id="SUPPLIER_CITY">
-        <descriptions defaultDescription="SUPPLIER_CITY"/>
+        <descriptions defaultDescription="SUPPLIER_CITY"></descriptions>
       </viewAttribute>
       <viewAttribute id="BUYER_COMPANYNAME">
-        <descriptions defaultDescription="BUYER_COMPANYNAME"/>
+        <descriptions defaultDescription="BUYER_COMPANYNAME"></descriptions>
       </viewAttribute>
       <viewAttribute id="YEAR">
-        <descriptions defaultDescription="YEAR"/>
+        <descriptions defaultDescription="YEAR"></descriptions>
       </viewAttribute>
       <viewAttribute id="QUARTER">
-        <descriptions defaultDescription="QUARTER"/>
+        <descriptions defaultDescription="QUARTER"></descriptions>
       </viewAttribute>
       <viewAttribute id="MONTH">
-        <descriptions defaultDescription="MONTH"/>
+        <descriptions defaultDescription="MONTH"></descriptions>
       </viewAttribute>
       <viewAttribute id="NETAMOUNT">
-        <descriptions defaultDescription="NETAMOUNT"/>
+        <descriptions defaultDescription="NETAMOUNT"></descriptions>
       </viewAttribute>
     </viewAttributes>
     <calculatedViewAttributes>
-      <calculatedViewAttribute id="NETAMOUNT_2015" datatype="DECIMAL" length="10" scale="2" expressionLanguage="SQL">
+      <calculatedViewAttribute datatype="DECIMAL" length="10" expressionLanguage="SQL" scale="2" id="NETAMOUNT_2015">
         <formula>0.00</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="NETAMOUNT_2016" datatype="DECIMAL" length="10" scale="2" expressionLanguage="SQL">
-        <formula>&quot;NETAMOUNT&quot;</formula>
+      <calculatedViewAttribute datatype="DECIMAL" length="10" expressionLanguage="SQL" scale="2" id="NETAMOUNT_2016">
+        <formula>"NETAMOUNT"</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
-    <restrictedViewAttributes/>
-    <input node="YR2016$$$$TA_Class_Project.TA_HDB::sales_order_lite2$$">
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_CATEGORY" source="PRODUCT_CATEGORY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PROD_COMPANYNAME" source="PROD_COMPANYNAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_COUNTRY" source="SUPPLIER_COUNTRY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_CITY" source="SUPPLIER_CITY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BUYER_COMPANYNAME" source="BUYER_COMPANYNAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NETAMOUNT" source="NETAMOUNT"/>
+    <restrictedViewAttributes></restrictedViewAttributes>
+    <input node="YR2016$$$$TA_Class_Project.TA_HDB::SALES_ORDER_LITE$$">
+      <mapping xsi:type="Calculation:AttributeMapping" source="PRODUCT_NAME" target="PRODUCT_NAME"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PRODUCT_CATEGORY" target="PRODUCT_CATEGORY"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PROD_COMPANYNAME" target="PROD_COMPANYNAME"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="SUPPLIER_COUNTRY" target="SUPPLIER_COUNTRY"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="SUPPLIER_CITY" target="SUPPLIER_CITY"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="BUYER_COMPANYNAME" target="BUYER_COMPANYNAME"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="YEAR" target="YEAR"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="QUARTER" target="QUARTER"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="MONTH" target="MONTH"></mapping>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NETAMOUNT" target="NETAMOUNT"></mapping>
     </input>
-    <filter>&quot;YEAR&quot; = 2016</filter>
+    <filter>"YEAR" = 2016</filter>
   </calculationView>
 </calculationViews>
 <logicalModel id="Union_1">
   <attributes>
-    <attribute id="PRODUCT_NAME" order="1" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="PRODUCT_NAME"/>
-      <keyMapping columnObjectName="Union_1" columnName="PRODUCT_NAME"/>
+    <attribute id="PRODUCT_NAME" displayAttribute="false" order="1" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_NAME"></descriptions>
+      <keyMapping columnObjectName="Union_1" columnName="PRODUCT_NAME"></keyMapping>
     </attribute>
-    <attribute id="PRODUCT_CATEGORY" order="2" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="PRODUCT_CATEGORY"/>
-      <keyMapping columnObjectName="Union_1" columnName="PRODUCT_CATEGORY"/>
+    <attribute id="PRODUCT_CATEGORY" displayAttribute="false" order="2" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_CATEGORY"></descriptions>
+      <keyMapping columnObjectName="Union_1" columnName="PRODUCT_CATEGORY"></keyMapping>
     </attribute>
-    <attribute id="PROD_COMPANYNAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="PROD_COMPANYNAME"/>
-      <keyMapping columnObjectName="Union_1" columnName="PROD_COMPANYNAME"/>
+    <attribute id="PROD_COMPANYNAME" displayAttribute="false" order="3" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROD_COMPANYNAME"></descriptions>
+      <keyMapping columnObjectName="Union_1" columnName="PROD_COMPANYNAME"></keyMapping>
     </attribute>
-    <attribute id="SUPPLIER_COUNTRY" order="4" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SUPPLIER_COUNTRY"/>
-      <keyMapping columnObjectName="Union_1" columnName="SUPPLIER_COUNTRY"/>
+    <attribute id="SUPPLIER_COUNTRY" displayAttribute="false" order="4" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_COUNTRY"></descriptions>
+      <keyMapping columnObjectName="Union_1" columnName="SUPPLIER_COUNTRY"></keyMapping>
     </attribute>
-    <attribute id="SUPPLIER_CITY" order="5" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SUPPLIER_CITY"/>
-      <keyMapping columnObjectName="Union_1" columnName="SUPPLIER_CITY"/>
+    <attribute id="SUPPLIER_CITY" displayAttribute="false" order="5" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_CITY"></descriptions>
+      <keyMapping columnObjectName="Union_1" columnName="SUPPLIER_CITY"></keyMapping>
     </attribute>
-    <attribute id="BUYER_COMPANYNAME" order="6" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="BUYER_COMPANYNAME"/>
-      <keyMapping columnObjectName="Union_1" columnName="BUYER_COMPANYNAME"/>
+    <attribute id="BUYER_COMPANYNAME" displayAttribute="false" order="6" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUYER_COMPANYNAME"></descriptions>
+      <keyMapping columnObjectName="Union_1" columnName="BUYER_COMPANYNAME"></keyMapping>
     </attribute>
-    <attribute id="QUARTER" order="7" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="QUARTER"/>
-      <keyMapping columnObjectName="Union_1" columnName="QUARTER"/>
+    <attribute id="QUARTER" displayAttribute="false" order="7" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUARTER"></descriptions>
+      <keyMapping columnObjectName="Union_1" columnName="QUARTER"></keyMapping>
     </attribute>
-    <attribute id="MONTH" order="8" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="MONTH"/>
-      <keyMapping columnObjectName="Union_1" columnName="MONTH"/>
+    <attribute id="MONTH" displayAttribute="false" order="8" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MONTH"></descriptions>
+      <keyMapping columnObjectName="Union_1" columnName="MONTH"></keyMapping>
     </attribute>
   </attributes>
-  <calculatedAttributes/>
+  <calculatedAttributes></calculatedAttributes>
   <baseMeasures>
-    <measure id="NETAMOUNT_2015" order="9" aggregationType="sum" measureType="simple">
-      <descriptions defaultDescription="NETAMOUNT_2015"/>
-      <measureMapping columnObjectName="Union_1" columnName="NETAMOUNT_2015"/>
+    <measure aggregationType="sum" id="NETAMOUNT_2015" order="9" measureType="simple">
+      <descriptions defaultDescription="NETAMOUNT_2015"></descriptions>
+      <measureMapping columnObjectName="Union_1" columnName="NETAMOUNT_2015"></measureMapping>
     </measure>
-    <measure id="NETAMOUNT_2016" order="10" aggregationType="sum" measureType="simple">
-      <descriptions defaultDescription="NETAMOUNT_2016"/>
-      <measureMapping columnObjectName="Union_1" columnName="NETAMOUNT_2016"/>
+    <measure aggregationType="sum" id="NETAMOUNT_2016" order="10" measureType="simple">
+      <descriptions defaultDescription="NETAMOUNT_2016"></descriptions>
+      <measureMapping columnObjectName="Union_1" columnName="NETAMOUNT_2016"></measureMapping>
     </measure>
   </baseMeasures>
-  <calculatedMeasures/>
-  <restrictedMeasures/>
-  <localDimensions/>
+  <calculatedMeasures></calculatedMeasures>
+  <restrictedMeasures></restrictedMeasures>
+  <localDimensions></localDimensions>
 </logicalModel>
 <layout>
   <shapes>
-    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="40" y="85"/>
+    <shape expanded="true" modelObjectNameSpace="MeasureGroup" modelObjectName="Output">
+      <upperLeftCorner x="40" y="85"></upperLeftCorner>
     </shape>
   
-    <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="100" y="175"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Union_1">
+      <upperLeftCorner x="100" y="175"></upperLeftCorner>
+      <rectangleSize width="160" height="30"></rectangleSize>
     </shape>
-    <shape expanded="true" modelObjectName="YR2015" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="-28" y="253"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="YR2015">
+      <upperLeftCorner x="-28" y="253"></upperLeftCorner>
+      <rectangleSize width="160" height="30"></rectangleSize>
     </shape>
-    <shape expanded="true" modelObjectName="YR2016" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="190" y="253"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="YR2016">
+      <upperLeftCorner x="190" y="253"></upperLeftCorner>
+      <rectangleSize width="160" height="30"></rectangleSize>
     </shape>
   </shapes>
 </layout>
