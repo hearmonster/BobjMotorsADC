@@ -67,14 +67,15 @@
       <viewAttribute id="PRODUCTID" aggregationType="sum">
         <descriptions defaultDescription="This column returns the catalog number of the product"/>
       </viewAttribute>
-      <viewAttribute id="PRODUCT_PRICE" aggregationType="sum">
-        <descriptions defaultDescription="The catalog price in US Dollars, may be subject to change"/>
-      </viewAttribute>
-      <viewAttribute id="PRODUCT_PRICE_1" aggregationType="sum">
+      <viewAttribute id="SALESITEM_PRICE" aggregationType="sum">
         <descriptions defaultDescription="The catalog price in US Dollars, may be subject to change"/>
       </viewAttribute>
     </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="SALESITEM_REVENUE" datatype="DECIMAL" length="13" scale="2" expressionLanguage="SQL">
+        <formula>TO_DECIMAL(&quot;SLQUANT&quot;)*&quot;SALESITEM_PRICE&quot;</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
     <restrictedViewAttributes/>
     <input node="SalesFact">
       <mapping xsi:type="Calculation:AttributeMapping" target="SALEID" source="SALEID"/>
@@ -85,8 +86,7 @@
     </input>
     <input node="Prod">
       <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTID" source="PRODUCTID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PRICE" source="PRODUCT_PRICE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PRICE_1" source="PRODUCT_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALESITEM_PRICE" source="SALESITEM_PRICE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PRODID" source="PRODUCTID"/>
     </input>
     <joinAttribute name="PRODID"/>
@@ -96,7 +96,7 @@
       <viewAttribute id="PRODUCTID">
         <descriptions defaultDescription="This column returns the catalog number of the product"/>
       </viewAttribute>
-      <viewAttribute id="PRODUCT_PRICE">
+      <viewAttribute id="SALESITEM_PRICE">
         <descriptions defaultDescription="The catalog price in US Dollars, may be subject to change"/>
       </viewAttribute>
     </viewAttributes>
@@ -104,12 +104,20 @@
     <restrictedViewAttributes/>
     <input node="TA_Class_Project.TA_HDB.BOBJ::DIM_PRODUCT">
       <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTID" source="PRODUCTID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PRICE" source="PRODUCT_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALESITEM_PRICE" source="PRODUCT_PRICE"/>
     </input>
   </calculationView>
 </calculationViews>
 <logicalModel id="SalesFact_Prod">
   <attributes>
+    <attribute id="SALEID" key="true" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALEID"/>
+      <keyMapping columnObjectName="SalesFact_Prod" columnName="SALEID"/>
+    </attribute>
+    <attribute id="SALEDATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALEDATE"/>
+      <keyMapping columnObjectName="SalesFact_Prod" columnName="SALEDATE"/>
+    </attribute>
     <attribute id="SALEDATE$local">
       <descriptions defaultDescription="SALEDATE"/>
       <keyMapping columnObjectName="SalesFact_Prod" columnName="SALEDATE"/>
@@ -124,7 +132,16 @@
     </attribute>
   </attributes>
   <calculatedAttributes/>
-  <baseMeasures/>
+  <baseMeasures>
+    <measure id="SLQUANT" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SLQUANT"/>
+      <measureMapping columnObjectName="SalesFact_Prod" columnName="SLQUANT"/>
+    </measure>
+    <measure id="SALESITEM_PRICE" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="The catalog price in US Dollars, may be subject to change"/>
+      <measureMapping columnObjectName="SalesFact_Prod" columnName="SALESITEM_PRICE"/>
+    </measure>
+  </baseMeasures>
   <calculatedMeasures/>
   <restrictedMeasures/>
   <localDimensions/>
