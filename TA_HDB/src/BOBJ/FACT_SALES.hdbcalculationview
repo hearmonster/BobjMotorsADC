@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="TA_Class_Project.TA_HDB.BOBJ::FACT_SALES" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="FACT_SALES"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="TA_Class_Project.TA_HDB.synonyms::BOBJ_SALE">
+    <resourceUri>TA_Class_Project.TA_HDB.synonyms::BOBJ_SALE</resourceUri>
+  </DataSource>
+  <DataSource id="TA_Class_Project.TA_HDB.synonyms::BOBJ_SALELINE">
+    <resourceUri>TA_Class_Project.TA_HDB.synonyms::BOBJ_SALELINE</resourceUri>
+  </DataSource>
+  <DataSource id="TA_Class_Project.TA_HDB.BOBJ::DIM_PRODUCT">
+    <resourceUri>TA_Class_Project.TA_HDB.BOBJ::DIM_PRODUCT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="SalesFact" cardinality="C1_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="SALEID" aggregationType="sum">
+        <descriptions defaultDescription="SALEID"/>
+      </viewAttribute>
+      <viewAttribute id="CUSTID" aggregationType="sum">
+        <descriptions defaultDescription="CUSTID"/>
+      </viewAttribute>
+      <viewAttribute id="SALEDATE">
+        <descriptions defaultDescription="SALEDATE"/>
+      </viewAttribute>
+      <viewAttribute id="PRODID" aggregationType="sum">
+        <descriptions defaultDescription="PRODID"/>
+      </viewAttribute>
+      <viewAttribute id="SLQUANT" aggregationType="sum">
+        <descriptions defaultDescription="SLQUANT"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="TA_Class_Project.TA_HDB.synonyms::BOBJ_SALE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALEID" source="SALEID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTID" source="CUSTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALEDATE" source="SALEDATE"/>
+    </input>
+    <input node="TA_Class_Project.TA_HDB.synonyms::BOBJ_SALELINE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODID" source="PRODID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SLQUANT" source="SLQUANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALEID" source="SALEID"/>
+    </input>
+    <joinAttribute name="SALEID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="SalesFact_Prod" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="SALEID" aggregationType="sum">
+        <descriptions defaultDescription="SALEID"/>
+      </viewAttribute>
+      <viewAttribute id="CUSTID" aggregationType="sum">
+        <descriptions defaultDescription="CUSTID"/>
+      </viewAttribute>
+      <viewAttribute id="SALEDATE">
+        <descriptions defaultDescription="SALEDATE"/>
+      </viewAttribute>
+      <viewAttribute id="PRODID" aggregationType="sum">
+        <descriptions defaultDescription="PRODID"/>
+      </viewAttribute>
+      <viewAttribute id="SLQUANT" aggregationType="sum">
+        <descriptions defaultDescription="SLQUANT"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCTID" aggregationType="sum">
+        <descriptions defaultDescription="This column returns the catalog number of the product"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_PRICE" aggregationType="sum">
+        <descriptions defaultDescription="The catalog price in US Dollars, may be subject to change"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_PRICE_1" aggregationType="sum">
+        <descriptions defaultDescription="The catalog price in US Dollars, may be subject to change"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="SalesFact">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALEID" source="SALEID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTID" source="CUSTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALEDATE" source="SALEDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODID" source="PRODID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SLQUANT" source="SLQUANT"/>
+    </input>
+    <input node="Prod">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTID" source="PRODUCTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PRICE" source="PRODUCT_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PRICE_1" source="PRODUCT_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODID" source="PRODUCTID"/>
+    </input>
+    <joinAttribute name="PRODID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Prod">
+    <viewAttributes>
+      <viewAttribute id="PRODUCTID">
+        <descriptions defaultDescription="This column returns the catalog number of the product"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_PRICE">
+        <descriptions defaultDescription="The catalog price in US Dollars, may be subject to change"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="TA_Class_Project.TA_HDB.BOBJ::DIM_PRODUCT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTID" source="PRODUCTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PRICE" source="PRODUCT_PRICE"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="SalesFact_Prod">
+  <attributes>
+    <attribute id="SALEDATE$local">
+      <descriptions defaultDescription="SALEDATE"/>
+      <keyMapping columnObjectName="SalesFact_Prod" columnName="SALEDATE"/>
+    </attribute>
+    <attribute id="PRODID$local">
+      <descriptions defaultDescription="PRODID"/>
+      <keyMapping columnObjectName="SalesFact_Prod" columnName="PRODID"/>
+    </attribute>
+    <attribute id="CUSTID$local">
+      <descriptions defaultDescription="CUSTID"/>
+      <keyMapping columnObjectName="SalesFact_Prod" columnName="CUSTID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <sharedDimensions>
+    <logicalJoin associatedObjectUri="TA_Class_Project.TA_HDB::TIME_DIM">
+      <attributes>
+        <attributeRef>SALEDATE$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>DATESQL</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_1" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="TA_Class_Project.TA_HDB.BOBJ::DIM_PRODUCT">
+      <attributes>
+        <attributeRef>PRODID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>PRODUCTID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_1" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="TA_Class_Project.TA_HDB.BOBJ::DIM_CUSTGEOG">
+      <attributes>
+        <attributeRef>CUSTID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>CUSTID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_1" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+  </sharedDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="SalesFact" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="62" y="355"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="TA_Class_Project.TA_HDB.synonyms::BOBJ_SALE" modelObjectNameSpace="SalesFact" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="TA_Class_Project.TA_HDB.synonyms::BOBJ_SALELINE" modelObjectNameSpace="SalesFact" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="SalesFact_Prod" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="127" y="214"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="SalesFact" modelObjectNameSpace="SalesFact_Prod" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Prod" modelObjectNameSpace="SalesFact_Prod" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Prod" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="242" y="355"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="SalesFact_Prod" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+      <upperLeftCorner x="283" y="-37"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="TA_Class_Project.TA_HDB::TIME_DIM" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="600" y="51"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="TA_Class_Project.TA_HDB.BOBJ::DIM_PRODUCT" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="21" y="56"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="TA_Class_Project.TA_HDB.BOBJ::DIM_CUSTGEOG" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="329" y="236"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

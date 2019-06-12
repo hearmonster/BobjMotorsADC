@@ -50,13 +50,9 @@
       <viewAttribute hidden="true" id="JOIN$REGNID$REGNID"/>
     </viewAttributes>
     <calculatedViewAttributes>
-      <calculatedViewAttribute id="COMPANYNAME" datatype="VARCHAR" length="80" expressionLanguage="SQL">
+      <calculatedViewAttribute id="FULLNAME" datatype="NVARCHAR" length="80" expressionLanguage="SQL">
         <formula>CONCAT(CONCAT(&quot;FRSTNAME&quot;,' '),&quot;LASTNAME&quot;)</formula>
-      </calculatedViewAttribute>
-      <calculatedViewAttribute id="STREET" datatype="VARCHAR" length="30" expressionLanguage="SQL">
-        <formula>CONCAT(CONCAT(&quot;ADDRESS&quot;, ', '),&quot;STATE&quot;)</formula>
-      </calculatedViewAttribute>
-    </calculatedViewAttributes>
+      </calculatedViewAttribute></calculatedViewAttributes>
     <restrictedViewAttributes/>
     <input node="TA_Class_Project.TA_HDB.synonyms::BOBJ_CUSTOMER">
       <mapping xsi:type="Calculation:AttributeMapping" target="CUSTID" source="CUSTID"/>
@@ -78,9 +74,6 @@
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="CustRegion_Country" cardinality="CN_1" joinType="inner">
     <viewAttributes>
-      <viewAttribute id="CUSTID">
-        <descriptions defaultDescription="Customer ID in the accouting system"/>
-      </viewAttribute>
       <viewAttribute id="CITY">
         <descriptions defaultDescription="The city in which the customer lives"/>
       </viewAttribute>
@@ -92,9 +85,6 @@
       </viewAttribute>
       <viewAttribute id="REGNNAME">
         <descriptions defaultDescription="The region name for the specified city"/>
-      </viewAttribute>
-      <viewAttribute id="CNTRYID">
-        <descriptions defaultDescription="CNTRYID"/>
       </viewAttribute>
       <viewAttribute id="COMPANYNAME">
         <descriptions defaultDescription="COMPANYNAME"/>
@@ -108,34 +98,36 @@
       <viewAttribute id="CNTRYNME">
         <descriptions defaultDescription="CNTRYNME"/>
       </viewAttribute>
-      <viewAttribute id="STREET">
-        <descriptions defaultDescription="STREET"/>
+    
+      <viewAttribute id="CUSTID">
+        <descriptions defaultDescription="Customer ID in the accouting system"/>
       </viewAttribute>
+      <viewAttribute hidden="true" id="JOIN$CNTRYID$CNTRYID"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <restrictedViewAttributes/>
     <input node="CustRegion">
-      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTID" source="CUSTID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ZIPCODE" source="ZIPCODE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PHONENO" source="PHONENO"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="REGNNAME" source="REGNNAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CNTRYID" source="CNTRYID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANYNAME" source="COMPANYNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANYNAME" source="FULLNAME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="LASTNAME" source="LASTNAME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="FRSTNAME" source="FRSTNAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTID" source="CUSTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CNTRYID$CNTRYID" source="CNTRYID"/>
     </input>
     <input node="TA_Class_Project.TA_HDB.synonyms::BOBJ_COUNTRY">
       <mapping xsi:type="Calculation:AttributeMapping" target="CNTRYNME" source="CNTRYNME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CNTRYID" source="CNTRYID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CNTRYID$CNTRYID" source="CNTRYID"/>
     </input>
-    <joinAttribute name="CNTRYID"/>
+    <joinAttribute name="JOIN$CNTRYID$CNTRYID"/>
   </calculationView>
 </calculationViews>
 <logicalModel id="CustRegion_Country">
   <attributes>
-    <attribute id="PARTNERID" order="1" displayAttribute="false" attributeHierarchyActive="false" key="true">
+    <attribute id="CUSTID" key="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Customer ID in the accouting system"/>
       <keyMapping columnObjectName="CustRegion_Country" columnName="CUSTID"/>
     </attribute>
@@ -147,40 +139,36 @@
       <descriptions defaultDescription="The zip code for the customer"/>
       <keyMapping columnObjectName="CustRegion_Country" columnName="ZIPCODE"/>
     </attribute>
-    <attribute id="STREET" order="4" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="STREET"/>
-      <keyMapping columnObjectName="CustRegion_Country" columnName="STREET"/>
-    </attribute>
-    <attribute id="COUNTRY" order="6" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="COUNTRY" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CNTRYNME"/>
       <keyMapping columnObjectName="CustRegion_Country" columnName="CNTRYNME"/>
     </attribute>
-    <attribute id="REGION" order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="REGION" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="The region name for the specified city"/>
       <keyMapping columnObjectName="CustRegion_Country" columnName="REGNNAME"/>
     </attribute>
-    <attribute id="PHONENUMBER" order="10" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PHONENUMBER" order="9" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="The phone number of the customer"/>
       <keyMapping columnObjectName="CustRegion_Country" columnName="PHONENO"/>
     </attribute>
-    <attribute id="COMPANYNAME" order="11" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="COMPANYNAME" order="10" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="COMPANYNAME"/>
       <keyMapping columnObjectName="CustRegion_Country" columnName="COMPANYNAME"/>
     </attribute>
   </attributes>
   <calculatedAttributes>
-    <calculatedAttribute id="BUILDING" order="5" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+    <calculatedAttribute id="BUILDING" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="10">
         <formula>''</formula>
       </keyCalculation>
       </calculatedAttribute>
-    <calculatedAttribute id="PARTNERROLE" order="8" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+    <calculatedAttribute id="PARTNERROLE" order="7" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="3">
         <formula>''</formula>
       </keyCalculation>
       </calculatedAttribute>
-    <calculatedAttribute id="EMAILADDRESS" order="9" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+    <calculatedAttribute id="EMAILADDRESS" order="8" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="255">
         <formula>''</formula>
       </keyCalculation>
       </calculatedAttribute>
@@ -196,7 +184,7 @@
     </shape>
   
     <shape expanded="true" modelObjectName="CustRegion" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="97" y="310"/>
+      <upperLeftCorner x="97" y="343"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="TA_Class_Project.TA_HDB.synonyms::BOBJ_CUSTOMER" modelObjectNameSpace="CustRegion" modelObjectType="JoinNodeInput">
@@ -208,7 +196,7 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="CustRegion_Country" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="107" y="181"/>
+      <upperLeftCorner x="107" y="212"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="CustRegion" modelObjectNameSpace="CustRegion_Country" modelObjectType="JoinNodeInput">
