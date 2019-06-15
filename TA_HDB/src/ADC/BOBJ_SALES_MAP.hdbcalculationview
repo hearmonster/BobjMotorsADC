@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="TA_Class_Project.TA_HDB.ADC::BOBJ_SALES_MAP" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="BOBJ_SALES Mapped"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="TA_Class_Project.TA_HDB.BOBJ::FACT_SALES">
+    <resourceUri>TA_Class_Project.TA_HDB.BOBJ::FACT_SALES</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BOBJ_FACT_fields">
+    <viewAttributes>
+      <viewAttribute id="YEAR">
+        <descriptions defaultDescription="YEAR"/>
+      </viewAttribute>
+      <viewAttribute id="QUARTER">
+        <descriptions defaultDescription="QUARTER"/>
+      </viewAttribute>
+      <viewAttribute id="_PRODUCTID">
+        <descriptions defaultDescription="PRODUCTID"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_CATEGORY">
+        <descriptions defaultDescription="PRODUCT_CATEGORY"/>
+      </viewAttribute>
+      <viewAttribute id="_CUSTID">
+        <descriptions defaultDescription="CUSTID"/>
+      </viewAttribute>
+      <viewAttribute id="CITY">
+        <descriptions defaultDescription="CITY"/>
+      </viewAttribute>
+      <viewAttribute id="COUNTRY">
+        <descriptions defaultDescription="COUNTRY"/>
+      </viewAttribute>
+      <viewAttribute id="_SALEID">
+        <descriptions defaultDescription="SALEID"/>
+      </viewAttribute>
+      <viewAttribute id="_SLQUANT">
+        <descriptions defaultDescription="SLQUANT"/>
+      </viewAttribute>
+      <viewAttribute id="_PRODUCT_NAME">
+        <descriptions defaultDescription="PRODUCT_NAME"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="TA_Class_Project.TA_HDB.BOBJ::FACT_SALES">
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_PRODUCTID" source="PRODUCTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_CATEGORY" source="PRODUCT_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_CUSTID" source="CUSTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_SALEID" source="SALEID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_SLQUANT" source="SLQUANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_PRODUCT_NAME" source="PRODUCT_NAME"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BOBJ_FACT_reTyped">
+    <viewAttributes>
+      <viewAttribute id="YEAR">
+        <descriptions defaultDescription="YEAR"/>
+      </viewAttribute>
+      <viewAttribute id="QUARTER">
+        <descriptions defaultDescription="QUARTER"/>
+      </viewAttribute>
+      <viewAttribute id="_PRODUCTID">
+        <descriptions defaultDescription="PRODUCTID"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_CATEGORY">
+        <descriptions defaultDescription="PRODUCT_CATEGORY"/>
+      </viewAttribute>
+      <viewAttribute id="_CUSTID">
+        <descriptions defaultDescription="CUSTID"/>
+      </viewAttribute>
+      <viewAttribute id="CITY">
+        <descriptions defaultDescription="CITY"/>
+      </viewAttribute>
+      <viewAttribute id="COUNTRY">
+        <descriptions defaultDescription="COUNTRY"/>
+      </viewAttribute>
+      <viewAttribute id="_SALEID">
+        <descriptions defaultDescription="SALEID"/>
+      </viewAttribute>
+      <viewAttribute id="_SLQUANT">
+        <descriptions defaultDescription="SLQUANT"/>
+      </viewAttribute>
+      <viewAttribute id="_PRODUCT_NAME">
+        <descriptions defaultDescription="PRODUCT_NAME"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="PRODUCTID" datatype="NVARCHAR" length="10" expressionLanguage="SQL">
+        <formula>TO_NVARCHAR(&quot;_PRODUCTID&quot;)</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="PARTNERID" datatype="NVARCHAR" length="10" expressionLanguage="SQL">
+        <formula>TO_NVARCHAR(&quot;_CUSTID&quot;)</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="SALESORDERID" datatype="NVARCHAR" length="10" expressionLanguage="SQL">
+        <formula>TO_NVARCHAR(&quot;_SALEID&quot;)</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="QUANTITY" datatype="DECIMAL" length="13" scale="3" expressionLanguage="SQL">
+        <formula>TO_DECIMAL(&quot;_SLQUANT&quot;, 13, 3)</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="PRODUCT_NAME" datatype="NVARCHAR" length="1024" expressionLanguage="SQL">
+        <formula>TO_NVARCHAR(&quot;_PRODUCT_NAME&quot;)</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <restrictedViewAttributes/>
+    <input node="BOBJ_FACT_fields">
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_PRODUCTID" source="_PRODUCTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_CATEGORY" source="PRODUCT_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_CUSTID" source="_CUSTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_SALEID" source="_SALEID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_SLQUANT" source="_SLQUANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_PRODUCT_NAME" source="_PRODUCT_NAME"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="BOBJ_FACT_reTyped">
+  <attributes>
+    <attribute id="SALESORDERID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALESORDERID"/>
+      <keyMapping columnObjectName="BOBJ_FACT_reTyped" columnName="SALESORDERID"/>
+    </attribute>
+    <attribute id="PARTNERID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNERID"/>
+      <keyMapping columnObjectName="BOBJ_FACT_reTyped" columnName="PARTNERID"/>
+    </attribute>
+    <attribute id="CITY" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITY"/>
+      <keyMapping columnObjectName="BOBJ_FACT_reTyped" columnName="CITY"/>
+    </attribute>
+    <attribute id="COUNTRY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY"/>
+      <keyMapping columnObjectName="BOBJ_FACT_reTyped" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="PRODUCTID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCTID"/>
+      <keyMapping columnObjectName="BOBJ_FACT_reTyped" columnName="PRODUCTID"/>
+    </attribute>
+    <attribute id="PRODUCT_NAME" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_NAME"/>
+      <keyMapping columnObjectName="BOBJ_FACT_reTyped" columnName="PRODUCT_NAME"/>
+    </attribute>
+    <attribute id="PRODUCT_CATEGORY" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_CATEGORY"/>
+      <keyMapping columnObjectName="BOBJ_FACT_reTyped" columnName="PRODUCT_CATEGORY"/>
+    </attribute>
+    <attribute id="YEAR" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyMapping columnObjectName="BOBJ_FACT_reTyped" columnName="YEAR"/>
+    </attribute>
+    <attribute id="QUARTER" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUARTER"/>
+      <keyMapping columnObjectName="BOBJ_FACT_reTyped" columnName="QUARTER"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="QUANTITY" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="QUANTITY"/>
+      <measureMapping columnObjectName="BOBJ_FACT_reTyped" columnName="QUANTITY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="BOBJ_FACT_fields" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-74" y="402"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="BOBJ_FACT_reTyped" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-44" y="295"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

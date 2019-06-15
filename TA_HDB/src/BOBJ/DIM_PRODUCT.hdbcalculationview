@@ -29,6 +29,9 @@
       <viewAttribute id="CNTRYID">
         <descriptions defaultDescription="This column is the identification of the product country"/>
       </viewAttribute>
+      <viewAttribute id="_VARTYNME">
+        <descriptions defaultDescription="VARTYNME"/>
+      </viewAttribute>
       <viewAttribute hidden="true" id="JOIN$VARTYID$VARTYID"/>
     </viewAttributes>
     <calculatedViewAttributes/>
@@ -41,6 +44,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VARTYID$VARTYID" source="VARTYID"/>
     </input>
     <input node="TA_Class_Project.TA_HDB.synonyms::BOBJ_VARIETY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="_VARTYNME" source="VARTYNME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VARTYID$VARTYID" source="VARTYID"/>
     </input>
     <joinAttribute name="JOIN$VARTYID$VARTYID"/>
@@ -59,6 +63,9 @@
       <viewAttribute id="CNTRYNME">
         <descriptions defaultDescription="CNTRYNME"/>
       </viewAttribute>
+      <viewAttribute id="PRODUCT_CATEGORY">
+        <descriptions defaultDescription="VARTYNME"/>
+      </viewAttribute>
       <viewAttribute hidden="true" id="JOIN$CNTRYID$CNTRYID"/>
     </viewAttributes>
     <calculatedViewAttributes/>
@@ -67,6 +74,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="PRODID" source="PRODID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PRODNAME" source="PRODNAME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PRODPRCE" source="PRODPRCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_CATEGORY" source="_VARTYNME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CNTRYID$CNTRYID" source="CNTRYID"/>
     </input>
     <input node="TA_Class_Project.TA_HDB.synonyms::BOBJ_COUNTRY">
@@ -78,87 +86,36 @@
 </calculationViews>
 <logicalModel id="ProdVar_Country">
   <attributes>
-    <attribute id="PRODUCTID" order="2" displayAttribute="false" attributeHierarchyActive="false" key="true">
+    <attribute id="PRODUCTID" order="1" displayAttribute="false" attributeHierarchyActive="false" key="true">
       <descriptions defaultDescription="This column returns the catalog number of the product"/>
       <keyMapping columnObjectName="ProdVar_Country" columnName="PRODID"/>
     </attribute>
-    <attribute id="PRODUCT_PRICE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PRODUCT_PRICE" order="3" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="The catalog price in US Dollars, may be subject to change"/>
       <keyMapping columnObjectName="ProdVar_Country" columnName="PRODPRCE"/>
     </attribute>
-    <attribute id="SUPPLIER_COUNTRY" order="14" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="SUPPLIER_COUNTRY" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Supplier (Product) Country"/>
       <keyMapping columnObjectName="ProdVar_Country" columnName="CNTRYNME"/>
     </attribute>
   
-    <attribute id="PRODUCT_NAME" order="15" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PRODUCT_NAME" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="This column is the catalog name of the product"/>
   
       <keyMapping columnObjectName="ProdVar_Country" columnName="PRODNAME"/>
   
-    </attribute></attributes>
+    </attribute>
+    <attribute id="PRODUCT_CATEGORY" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_CATEGORY"/>
+      <keyMapping columnObjectName="ProdVar_Country" columnName="PRODUCT_CATEGORY"/>
+    </attribute>
+  </attributes>
   <calculatedAttributes>
-    <calculatedAttribute id="PROD_COMPANY" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
-        <formula>''</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-    <calculatedAttribute id="PRODUCT_TYPECODE" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="PRODUCT_TYPECODE" order="2" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="20">
         <formula>'AUTOMOTIVE VEHICLE'</formula>
       </keyCalculation>
-      </calculatedAttribute>
-    <calculatedAttribute id="PRODUCT_CATEGORY" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
-        <formula>''</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-    <calculatedAttribute id="PRODUCT_WEIGHTMEASURE" order="5" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
-        <formula>'EA'</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-    <calculatedAttribute id="PRODUCT_WEIGHTUNIT" order="6" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
-        <formula>''</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-    <calculatedAttribute id="PRODUCTPICURL" order="8" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
-        <formula>''</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-    <calculatedAttribute id="SUPPLIERID" order="9" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
-        <formula>''</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-    <calculatedAttribute id="SUPPLIER_CITY" order="10" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
-        <formula>''</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-    <calculatedAttribute id="SUPPLIER_POSTALCODE" order="11" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
-        <formula>''</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-    <calculatedAttribute id="SUPPLIER_STREET" order="12" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
-        <formula>''</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-    <calculatedAttribute id="SUPPLIER_BUILDING" order="13" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
-        <formula>''</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-    <calculatedAttribute id="PRODUCT_DESCRIPTION" order="16" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
-        <formula>''</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-  </calculatedAttributes>
+      </calculatedAttribute></calculatedAttributes>
   <baseMeasures/>
   <calculatedMeasures/>
   <restrictedMeasures/>

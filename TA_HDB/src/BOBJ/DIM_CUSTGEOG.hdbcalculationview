@@ -139,40 +139,24 @@
       <descriptions defaultDescription="The zip code for the customer"/>
       <keyMapping columnObjectName="CustRegion_Country" columnName="ZIPCODE"/>
     </attribute>
-    <attribute id="COUNTRY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="COUNTRY" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CNTRYNME"/>
       <keyMapping columnObjectName="CustRegion_Country" columnName="CNTRYNME"/>
     </attribute>
-    <attribute id="REGION" order="6" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="REGION" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="The region name for the specified city"/>
       <keyMapping columnObjectName="CustRegion_Country" columnName="REGNNAME"/>
     </attribute>
-    <attribute id="PHONENUMBER" order="9" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PHONENUMBER" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="The phone number of the customer"/>
       <keyMapping columnObjectName="CustRegion_Country" columnName="PHONENO"/>
     </attribute>
-    <attribute id="COMPANYNAME" order="10" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="COMPANYNAME" order="7" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="COMPANYNAME"/>
       <keyMapping columnObjectName="CustRegion_Country" columnName="COMPANYNAME"/>
     </attribute>
   </attributes>
-  <calculatedAttributes>
-    <calculatedAttribute id="BUILDING" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="10">
-        <formula>''</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-    <calculatedAttribute id="PARTNERROLE" order="7" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="3">
-        <formula>''</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-    <calculatedAttribute id="EMAILADDRESS" order="8" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="255">
-        <formula>''</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-  </calculatedAttributes>
+  <calculatedAttributes/>
   <baseMeasures/>
   <calculatedMeasures/>
   <restrictedMeasures/>
